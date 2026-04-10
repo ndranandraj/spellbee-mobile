@@ -7,54 +7,128 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Spell Bee">
-    <link rel="manifest" href="manifest.json">
-    <title>Spell Bee Practice App</title>
+    <link rel="apple-touch-icon" href="icon-180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiU3BlbGwgQmVlIFByYWN0aWNlIiwic2hvcnRfbmFtZSI6IlNwZWxsIEJlZSIsImRlc2NyaXB0aW9uIjoiUHJhY3RpY2Ugc3BlbGxpbmcgZm9yIHNwZWxsIGJlZSBjb21wZXRpdGlvbnMiLCJzdGFydF91cmwiOiIvIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsInRoZW1lX2NvbG9yIjoiIzkzMzNlYSIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJpY29ucyI6W3sic3JjIjoiaWNvbi0xOTIucG5nIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9LHsic3JjIjoiaWNvbi01MTIucG5nIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3BuZyJ9XX0=">
+    <title>Spell Bee Practice</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media (display-mode: standalone) {
+            body { padding-top: env(safe-area-inset-top); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(236, 72, 153, 0.8); }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+        .sparkle { animation: sparkle 1.5s ease-in-out infinite; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100">
-    <div class="p-4 md:p-6">
+<body class="min-h-screen bg-gradient-to-br from-purple-900 via-pink-600 to-blue-900 gradient-animate relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 blur-3xl float-animation"></div>
+        <div class="absolute top-40 right-20 w-40 h-40 bg-pink-300 rounded-full opacity-20 blur-3xl float-animation" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-36 h-36 bg-purple-300 rounded-full opacity-20 blur-3xl float-animation" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 right-1/3 w-44 h-44 bg-blue-300 rounded-full opacity-20 blur-3xl float-animation" style="animation-delay: 0.5s;"></div>
+    </div>
+    <div class="p-4 md:p-6 relative z-10">
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 border-4 border-transparent bg-clip-padding" style="background-image: linear-gradient(white, white), linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-origin: border-box; background-clip: padding-box, border-box;">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-3">
-                    🐝 Spell Bee Practice
+            <div class="bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-8 border-4 pulse-glow" style="border-image: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) 1;">
+                <h1 class="text-4xl md:text-6xl font-black text-center mb-3 float-animation">
+                    <span class="inline-block sparkle text-yellow-400 text-5xl md:text-7xl">🐝</span>
+                    <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent gradient-animate">
+                        Spell Bee Practice
+                    </span>
                 </h1>
-                <p class="text-center text-gray-600 mb-6 text-sm md:text-lg font-medium">
-                    Mobile Practice App
+                <p class="text-center text-gray-700 mb-6 text-sm md:text-lg font-bold animate-pulse">
+                    ✨ Master Your Spelling Skills ✨
                 </p>
 
                 <div id="inputSection" class="space-y-4">
-                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 rounded-xl p-4 mb-4">
-                        <p class="text-green-800 text-sm font-semibold flex items-center gap-2">
-                            <span class="text-xl">✓</span> Ready to practice! Words and API key are preloaded.
+                    <div id="apiKeySetup" class="bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-yellow-300 rounded-2xl p-4 mb-4 shadow-xl pulse-glow" style="display: none;">
+                        <p class="text-white text-sm font-bold mb-3 flex items-center gap-2">
+                            <span class="text-2xl sparkle">🔑</span> Enter Your Merriam-Webster API Key
+                        </p>
+                        <p class="text-white text-xs mb-3">Get your free key at <a href="https://dictionaryapi.com/" target="_blank" class="underline font-bold">dictionaryapi.com</a></p>
+                        <div class="flex gap-2">
+                            <input type="text" id="userApiKeyInput" placeholder="Paste your API key here" class="flex-1 px-3 py-2 border-2 border-yellow-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm font-semibold"/>
+                            <button id="saveUserApiKey" class="bg-white text-orange-600 px-4 py-2 rounded-xl font-bold hover:bg-yellow-100 transition">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-400 to-emerald-500 border-2 border-green-300 rounded-2xl p-4 mb-4 shadow-xl pulse-glow">
+                        <p class="text-white text-sm font-bold flex items-center gap-2">
+                            <span class="text-2xl sparkle">✓</span> Ready! Words are preloaded. Tap Start to begin.
                         </p>
                     </div>
 
-                    <div class="border-3 border-dashed border-purple-400 rounded-2xl p-8 text-center hover:border-purple-600 transition-all bg-gradient-to-br from-purple-50 to-pink-50 shadow-inner">
+                    <div class="glass-effect border-2 border-purple-400 rounded-2xl p-4 mb-4 shadow-2xl">
+                        <label class="block text-sm font-black text-purple-900 mb-2 flex items-center gap-2">
+                            <span class="text-xl sparkle">🎙️</span> Select Voice
+                        </label>
+                        <select id="voiceSelect" class="w-full px-4 py-3 border-3 border-purple-500 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 font-bold text-sm bg-white shadow-lg">
+                            <option value="">Loading voices...</option>
+                        </select>
+                    </div>
+
+                    <div class="border-3 border-dashed border-purple-500 rounded-2xl p-8 text-center hover:border-pink-500 transition-all bg-gradient-to-br from-purple-100 to-pink-100 shadow-2xl hover:shadow-pink-500/50 transform hover:scale-105">
                         <input type="file" accept=".txt" id="fileUpload" class="hidden"/>
                         <label for="fileUpload" class="cursor-pointer block">
-                            <svg class="w-12 h-12 mx-auto text-purple-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                            <svg class="w-16 h-16 mx-auto text-purple-600 mb-4 float-animation" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                             </svg>
-                            <p class="text-lg font-bold text-gray-800">Upload Your Own Word List</p>
-                            <p class="text-xs text-gray-600 mt-2">(Optional - or use preloaded words)</p>
+                            <p class="text-xl font-black text-gray-900">📁 Upload Word List</p>
+                            <p class="text-xs text-gray-700 mt-2 font-semibold">(Optional - Custom Words)</p>
                         </label>
                     </div>
 
-                    <div class="text-center text-gray-500 font-bold">OR</div>
+                    <div class="text-center text-white font-black text-xl sparkle">✨ OR ✨</div>
 
                     <div>
-                        <textarea id="wordInput" placeholder="Add more words here (optional)" class="w-full h-32 p-4 border-3 border-purple-300 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-300 text-base shadow-lg"></textarea>
-                        <button id="loadCustomBtn" class="mt-3 w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 rounded-2xl font-bold text-base hover:from-blue-700 hover:to-cyan-700 shadow-xl transform hover:scale-105 transition">
-                            📝 Add Custom Words
+                        <textarea id="wordInput" placeholder="✍️ Add more words here (optional)" class="w-full h-32 p-4 border-4 border-purple-400 rounded-2xl focus:outline-none focus:ring-4 focus:ring-pink-400 text-base shadow-2xl font-semibold"></textarea>
+                        <button id="loadCustomBtn" class="mt-4 w-full bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 text-white py-4 rounded-2xl font-black text-lg shadow-2xl transform hover:scale-105 transition gradient-animate">
+                            <span class="text-2xl mr-2">📝</span> Add Custom Words
                         </button>
                     </div>
 
-                    <button id="startPracticeBtn" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-2xl font-bold text-lg hover:from-purple-700 hover:to-pink-700 shadow-xl transform hover:scale-105 transition">
-                        <span class="text-2xl mr-2">🚀</span> Start Practice with Preloaded Words
+                    <button id="startPracticeBtn" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white py-5 rounded-2xl font-black text-xl shadow-2xl transform hover:scale-110 transition pulse-glow gradient-animate">
+                        <span class="text-3xl mr-2 sparkle">🚀</span> START PRACTICE NOW!
                     </button>
                 </div>
 
                 <div id="practiceSection" class="hidden space-y-4">
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-400 rounded-xl p-3 mb-2">
+                        <label class="block text-xs font-bold text-blue-900 mb-1">🎙️ Voice</label>
+                        <select id="voiceSelectPractice" class="w-full px-3 py-2 border-2 border-blue-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-semibold text-xs bg-white">
+                            <option value="">Loading voices...</option>
+                        </select>
+                    </div>
+
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-2xl shadow-md border-2 border-purple-200">
                         <div class="flex flex-col md:flex-row items-start md:items-center gap-3 w-full md:w-auto">
                             <span id="progressText" class="text-base md:text-lg font-bold text-purple-700">Word 1 of 10</span>
@@ -70,31 +144,31 @@
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-br from-purple-600 via-pink-500 to-blue-600 rounded-3xl p-6 md:p-10 text-white text-center shadow-2xl border-4 border-white" style="min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="bg-gradient-to-br from-purple-600 via-pink-500 to-blue-600 rounded-3xl p-6 md:p-10 text-white text-center shadow-2xl border-4 border-white pulse-glow" style="min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
                         <div class="grid grid-cols-3 gap-2 md:gap-4 justify-center mb-6">
-                            <button id="speakBtn" class="bg-white text-purple-600 rounded-2xl p-4 md:p-6 transition-all hover:scale-110 shadow-2xl hover:shadow-purple-500/50 transform">
-                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button id="speakBtn" class="glass-effect text-white rounded-2xl p-4 md:p-6 transition-all active:scale-95 shadow-2xl hover:shadow-purple-400/80 transform hover:scale-110 border-2 border-white/50">
+                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto sparkle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
                                 </svg>
                             </button>
-                            <button id="speakSlowBtn" class="bg-white text-pink-600 rounded-2xl p-4 md:p-6 transition-all hover:scale-110 shadow-2xl hover:shadow-pink-500/50 transform">
-                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button id="speakSlowBtn" class="glass-effect text-white rounded-2xl p-4 md:p-6 transition-all active:scale-95 shadow-2xl hover:shadow-pink-400/80 transform hover:scale-110 border-2 border-white/50">
+                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto sparkle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </button>
-                            <button id="speakExtraSlowBtn" class="bg-white text-blue-600 rounded-2xl p-4 md:p-6 transition-all hover:scale-110 shadow-2xl hover:shadow-blue-500/50 transform">
-                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button id="speakExtraSlowBtn" class="glass-effect text-white rounded-2xl p-4 md:p-6 transition-all active:scale-95 shadow-2xl hover:shadow-blue-400/80 transform hover:scale-110 border-2 border-white/50">
+                                <svg class="w-8 h-8 md:w-12 md:h-12 mx-auto sparkle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"/>
                                 </svg>
                             </button>
                         </div>
-                        <div class="grid grid-cols-3 gap-2 justify-center mb-4 text-xs md:text-sm font-bold">
-                            <span class="bg-purple-500 px-2 py-1 rounded-full">Normal</span>
-                            <span class="bg-pink-500 px-2 py-1 rounded-full">Slow</span>
-                            <span class="bg-blue-500 px-2 py-1 rounded-full">Extra</span>
+                        <div class="grid grid-cols-3 gap-2 justify-center mb-6 text-xs md:text-sm font-black">
+                            <span class="bg-white/30 px-2 py-1 rounded-full backdrop-blur-sm sparkle">🔊 Normal</span>
+                            <span class="bg-white/30 px-2 py-1 rounded-full backdrop-blur-sm sparkle" style="animation-delay: 0.3s;">🐌 Slow</span>
+                            <span class="bg-white/30 px-2 py-1 rounded-full backdrop-blur-sm sparkle" style="animation-delay: 0.6s;">🐢 Extra</span>
                         </div>
                         <div id="wordDisplay">
-                            <button id="showWordBtn" class="text-lg md:text-2xl underline hover:text-yellow-200 font-bold bg-white/20 px-6 py-3 rounded-2xl hover:bg-white/30 transition">Show Word</button>
+                            <button id="showWordBtn" class="text-lg md:text-2xl underline font-black glass-effect px-8 py-4 rounded-2xl hover:bg-white/40 transition transform hover:scale-110 shadow-2xl">✨ Show Word ✨</button>
                         </div>
                     </div>
 
@@ -104,26 +178,26 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
-                        <button id="showMeaningBtn" class="col-span-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-2xl font-bold text-base hover:from-purple-600 hover:to-pink-600 shadow-lg transform hover:scale-105 transition">
-                            📖 Show Meaning
+                        <button id="showMeaningBtn" class="col-span-2 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white py-4 rounded-2xl font-black text-lg shadow-2xl transform hover:scale-105 transition pulse-glow gradient-animate">
+                            <span class="sparkle">📖</span> Show Meaning
                         </button>
                         
-                        <button id="prevBtn" class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-2xl font-bold text-sm hover:from-blue-600 hover:to-cyan-600 shadow-lg transform hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                        <button id="prevBtn" class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-2xl font-black text-sm shadow-2xl transform hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed gradient-animate">
                             ⏮️ Previous
                         </button>
 
-                        <button id="nextBtn" class="bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-2xl font-bold text-sm hover:from-green-600 hover:to-emerald-600 shadow-lg transform hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                        <button id="nextBtn" class="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-2xl font-black text-sm shadow-2xl transform hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed gradient-animate">
                             ⏭️ Next
                         </button>
 
-                        <button id="resetBtn" class="col-span-2 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-2xl font-bold text-base hover:from-orange-600 hover:to-red-600 shadow-lg transform hover:scale-105 transition">
-                            🔄 Start Over
+                        <button id="resetBtn" class="col-span-2 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white py-4 rounded-2xl font-black text-lg shadow-2xl transform hover:scale-105 transition gradient-animate">
+                            <span class="sparkle">🔄</span> Start Over
                         </button>
                     </div>
 
-                    <div class="bg-gradient-to-r from-blue-100 to-cyan-100 border-2 border-blue-300 rounded-2xl p-4 shadow-lg">
-                        <p class="text-xs md:text-sm text-blue-900 font-semibold">
-                            <span class="text-lg">💡</span> <strong>Tips:</strong> Listen to the pronunciation, try to spell it, then reveal the word!
+                    <div class="glass-effect border-2 border-cyan-300 rounded-2xl p-5 shadow-2xl pulse-glow">
+                        <p class="text-sm text-white font-black">
+                            <span class="text-2xl sparkle">💡</span> <strong>Pro Tip:</strong> Listen, spell it, then reveal!
                         </p>
                     </div>
                 </div>
@@ -132,126 +206,14 @@
     </div>
 
     <script>
-        // PRELOADED CONFIGURATION - EDIT THESE VALUES
-        var PRELOADED_API_KEY = '3ff6f4f1-a644-4fb6-ac0f-d10897c2d3fe'; // Replace with your actual Merriam-Webster API key
+        var PRELOADED_API_KEY = localStorage.getItem('user_api_key') || '';
         var PRELOADED_WORDS = [
-'cat', 'dog', 'sun', 'bed', 'hat',
-'run', 'man', 'red', 'big', 'mom',
-'dad', 'sit', 'top', 'map', 'log',
-'fan', 'pen', 'box', 'car', 'bus',
-'jump', 'play', 'stop', 'look', 'fish',
-'tree', 'book', 'ball', 'milk', 'rain',
-'snow', 'kite', 'ship', 'frog', 'cake',
-'duck', 'hand', 'flag', 'moon', 'bird',
-'boat', 'bell', 'ring', 'lamp', 'coat',
-'hill', 'wind', 'rock', 'fire', 'bear',
-'wave', 'grass', 'cloud', 'brush', 'chair',
-'clock', 'mouse', 'horse', 'house', 'lemon',
-'tiger', 'apple', 'bread', 'sweet', 'plant',
-'fruit', 'light', 'table', 'pencil', 'cookie',
-'window', 'jacket', 'purple', 'orange', 'yellow',
-'winter', 'watch', 'space', 'beans', 'money',
-'angry', 'chess', 'friend', 'dream', 'child',
-'motor', 'bottle', 'careful', 'little', 'summer',
-'stared', 'freeze', 'talk', 'would', 'cost',
-'know', 'belly', 'welcome', 'foot', 'bank',
-'cheese', 'kind', 'west', 'move', 'hurt',
-'winner', 'wishes', 'wheel', 'blanket', 'cartoon',
-'show', 'roof', 'trunk', 'each', 'star',
-'spring', 'sting', 'leaf', 'autumn', 'fresh',
-'park', 'kangaroo', 'sleep', 'dragon', 'river',
-'upset', 'sandwich', 'island', 'panda', 'bicycle',
-'kiwi', 'roar', 'shake', 'laser', 'once',
-'town', 'cricket', 'rose', 'clever', 'myself',
-'garden', 'soda', 'jumbo', 'school', 'mouth',
-'nacho', 'picture', 'flower', 'sticky', 'monster',
-'pie', 'snore', 'family', 'half', 'vacuum',
-'animal', 'size', 'acorn', 'corner', 'hotel',
-'twenty', 'rabbit', 'twist', 'circle', 'castle',
-'chip', 'bakery', 'market', 'finish', 'pattern',
-'pocket', 'cheer', 'mildew', 'jungle', 'bench',
-'crayon', 'cotton', 'understand', 'dough', 'forest',
-'hook', 'slumber', 'dining', 'collect', 'missing',
-'button', 'coyote', 'pretend', 'kitten', 'flame',
-'clasp', 'letter', 'never', 'return', 'hammer',
-'silly', 'vanish', 'engine', 'sound', 'escape',
-'square', 'smile', 'rinse', 'number', 'rooster',
-'radio', 'basket', 'tennis', 'awful', 'tomato',
-'towel', 'spiral', 'penguin', 'salsa', 'lizard',
-'elephant', 'pear', 'voice', 'library', 'empty',
-'cosmic', 'balloon', 'water', 'pirate', 'teacher',
-'lion', 'excellent', 'chocolate', 'turtle', 'cheddar',
-'babble', 'verge', 'raven', 'rustic', 'drizzle',
-'hustle', 'opinion', 'portion', 'various', 'damage',
-'honesty', 'wherever', 'sherbet', 'notable', 'faucet',
-'pertaining', 'watchman', 'cushion', 'exalt', 'tropics',
-'detain', 'aspect', 'etching', 'almond', 'quota',
-'version', 'venture', 'trousers', 'nervous', 'imagine',
-'hospital', 'tribute', 'dwelling', 'likable', 'vacation',
-'passenger', 'grime', 'doctors', 'absorb', 'assets',
-'drafts', 'tirade', 'calcium', 'overhaul', 'childish',
-'sought', 'stereo', 'campfire', 'current', 'tenant',
-'relic', 'purely', 'mutual', 'fashion', 'gloat',
-'leash', 'legend', 'probable', 'reflect', 'colored',
-'basis', 'ravine', 'wound', 'surprise', 'misplace',
-'relish', 'numerous', 'eighth', 'cheetah', 'account',
-'ream', 'ally', 'allowance', 'largely', 'sparse',
-'newscast', 'calorie', 'furnace', 'planet', 'anxious',
-'media', 'congress', 'mistake', 'lunar', 'touchy',
-'daughter', 'musician', 'jostle', 'correct', 'planning',
-'eastward', 'rind', 'perspire', 'trinket', 'possibly',
-'dispute', 'autumn', 'warrant', 'elastic', 'farmer',
-'emblem', 'absence', 'trophy', 'salmon', 'clarify',
-'mileage', 'butcher', 'greetings', 'operation', 'civilian',
-'naughty', 'logical', 'culprit', 'palace', 'fountain',
-'reveal', 'climate', 'location', 'plumber', 'support',
-'challenge', 'bulletin', 'oval', 'automobile', 'verify',
-'purpose', 'dedication', 'alibi', 'actively', 'invention',
-'mobility', 'service', 'tricycle', 'sparrow', 'curtain',
-'thunderous', 'reaching', 'retrieve', 'weatherproof', 'caption',
-'drench', 'sculpture', 'arson', 'accident', 'crawled',
-'eﬀort', 'garbage', 'legitimate', 'gauge', 'visible',
-'unexpected', 'ethnic', 'organize', 'geologist', 'avenue',
-'drought', 'historian', 'duration', 'relieve', 'orchestra',
-'abduct', 'extreme', 'pentagon', 'smudge', 'errant',
-'stimulating', 'embrace', 'research', 'dramatize', 'cardinal',
-'prompt', 'misbehave', 'gallop', 'multiple', 'finance',
-'aviator', 'attribute', 'machine', 'chemical', 'balance',
-'sacrifice', 'moderate', 'primitive', 'thoughtful', 'theme',
-'receipt', 'windshield', 'agreeable', 'vehicle', 'insincere',
-'figure', 'speechless', 'glorious', 'frenzy', 'adorable',
-'incomplete', 'apartment', 'embarrass', 'turbulent', 'anchor',
-'cleanse', 'regulation', 'against', 'announce', 'aluminum',
-'weakness', 'irritate', 'envelope', 'scheme', 'condition',
-'dreadful', 'cluster', 'identify', 'mischief', 'tension',
-'surrender', 'additional', 'peasant', 'optimism', 'leverage',
-'pigment', 'associate', 'beautiful', 'cabbage', 'voluntary',
-'conclusion', 'conquer', 'introduce', 'length', 'system',
-'escalator', 'invalid', 'verdict', 'reindeer', 'interesting',
-'peacekeeper', 'restrain', 'species', 'batteries', 'resemble',
-'charcoal', 'inflation', 'engineer', 'language', 'enzyme',
-'junction', 'paragraph', 'volunteer', 'possession', 'scarce',
-'sensitive', 'aquarium', 'hostile', 'dynasty', 'teenagers',
-'compound', 'adequate', 'lagoon', 'economy', 'horizontal',
-'studious', 'ceremony', 'baggage', 'custodian', 'tardy',
-'diﬀerence', 'particle', 'scheme', 'gasoline', 'jealous',
-'keyboard', 'scenery', 'interview', 'tradition', 'digestible',
-'frequent', 'awareness', 'valuable', 'spacecraft', 'alien',
-'suitable', 'integrity', 'abilities', 'athlete', 'delivered',
-'straighten', 'hydrogen', 'disposal', 'humanity', 'fluoride',
-'headline', 'contractor', 'barbarian', 'eclipse', 'unnecessary',
-'citizenship', 'capacity', 'circular', 'ticklish', 'emperor',
-'ourselves', 'assistant', 'interval', 'carcass', 'eerie',
-'aptitude', 'anointing', 'evasive', 'banquet', 'furious',
-'unfortunate', 'calculate', 'answered', 'changeable', 'bamboo',
-'collective', 'octave', 'patriotism', 'cultivate', 'pharmacy',
-'favorable', 'charitable', 'retrieve', 'appoint', 'fatality',
-'editorial', 'ultimate', 'issuing', 'wonderfully', 'repaired',
-'interfere', 'fabulous', 'breakable', 'dynamic', 'juvenile',
-'magazine', 'national', 'misfortunate', 'ownership', 'instance',
-'repellant', 'amusement', 'acquire', 'mortified', 'simplify',
-'watermelon', 'cautious', 'petroleum', 'disguise', 'although',
-'exhibit', 'retrieve']
+            'accommodate', 'rhythm', 'conscience', 'embarrass', 'maintenance',
+            'parallel', 'privilege', 'occurrence', 'definitely', 'separate',
+            'necessary', 'piece', 'receive', 'believe', 'achieve',
+            'environment', 'government', 'argument', 'temperature', 'weird',
+            'calendar', 'recommend', 'science', 'exaggerate', 'library'
+        ];
 
         var words = [];
         var currentIndex = 0;
@@ -259,14 +221,21 @@
         var apiKey = PRELOADED_API_KEY;
         var timerInterval = null;
         var elapsedSeconds = 0;
+        var selectedVoice = null;
+        var availableVoices = [];
 
         var elements = {
             inputSection: document.getElementById('inputSection'),
             practiceSection: document.getElementById('practiceSection'),
+            apiKeySetup: document.getElementById('apiKeySetup'),
+            userApiKeyInput: document.getElementById('userApiKeyInput'),
+            saveUserApiKey: document.getElementById('saveUserApiKey'),
             fileUpload: document.getElementById('fileUpload'),
             wordInput: document.getElementById('wordInput'),
             loadCustomBtn: document.getElementById('loadCustomBtn'),
             startPracticeBtn: document.getElementById('startPracticeBtn'),
+            voiceSelect: document.getElementById('voiceSelect'),
+            voiceSelectPractice: document.getElementById('voiceSelectPractice'),
             progressText: document.getElementById('progressText'),
             timerDisplay: document.getElementById('timerDisplay'),
             wordNumberInput: document.getElementById('wordNumberInput'),
@@ -285,12 +254,103 @@
             resetBtn: document.getElementById('resetBtn')
         };
 
-        // Start with preloaded words
+        // Check if API key exists, if not show setup
+        if (!PRELOADED_API_KEY) {
+            elements.apiKeySetup.style.display = 'block';
+        }
+
+        // Save user's API key
+        elements.saveUserApiKey.addEventListener('click', function() {
+            var key = elements.userApiKeyInput.value.trim();
+            if (key) {
+                localStorage.setItem('user_api_key', key);
+                apiKey = key;
+                PRELOADED_API_KEY = key;
+                elements.apiKeySetup.style.display = 'none';
+                alert('API key saved! You can now use definitions.');
+            }
+        });
+
+        function loadVoices() {
+            availableVoices = window.speechSynthesis.getVoices();
+            
+            // Filter for English voices only
+            var englishVoices = availableVoices.filter(function(voice) {
+                return voice.lang.startsWith('en');
+            });
+            
+            // Sort: US English first, then UK, then others
+            englishVoices.sort(function(a, b) {
+                if (a.lang === 'en-US' && b.lang !== 'en-US') return -1;
+                if (a.lang !== 'en-US' && b.lang === 'en-US') return 1;
+                if (a.lang === 'en-GB' && b.lang !== 'en-GB' && b.lang !== 'en-US') return -1;
+                if (a.lang !== 'en-GB' && b.lang === 'en-GB') return 1;
+                return a.name.localeCompare(b.name);
+            });
+            
+            // Populate both dropdowns
+            [elements.voiceSelect, elements.voiceSelectPractice].forEach(function(select) {
+                select.innerHTML = '';
+                
+                // Add auto option
+                var autoOption = document.createElement('option');
+                autoOption.value = '';
+                autoOption.textContent = 'Auto (Best Available)';
+                select.appendChild(autoOption);
+                
+                // Add voices grouped by language
+                var currentLang = '';
+                englishVoices.forEach(function(voice) {
+                    if (voice.lang !== currentLang) {
+                        currentLang = voice.lang;
+                        var optgroup = document.createElement('optgroup');
+                        optgroup.label = voice.lang === 'en-US' ? 'US English' : 
+                                        voice.lang === 'en-GB' ? 'UK English' : 
+                                        'English (' + voice.lang + ')';
+                        select.appendChild(optgroup);
+                    }
+                    
+                    var option = document.createElement('option');
+                    option.value = voice.name;
+                    option.textContent = voice.name.replace(/^Microsoft |^Google /, '');
+                    select.lastChild.appendChild(option);
+                });
+            });
+            
+            // Set default to auto
+            if (!selectedVoice && englishVoices.length > 0) {
+                var defaultVoice = englishVoices.find(function(v) {
+                    return v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Google'));
+                }) || englishVoices[0];
+                selectedVoice = defaultVoice;
+            }
+        }
+        
+        // Voice selection handlers
+        elements.voiceSelect.addEventListener('change', function() {
+            var voiceName = this.value;
+            if (voiceName) {
+                selectedVoice = availableVoices.find(function(v) { return v.name === voiceName; });
+            } else {
+                selectedVoice = null;
+            }
+            elements.voiceSelectPractice.value = voiceName;
+        });
+        
+        elements.voiceSelectPractice.addEventListener('change', function() {
+            var voiceName = this.value;
+            if (voiceName) {
+                selectedVoice = availableVoices.find(function(v) { return v.name === voiceName; });
+            } else {
+                selectedVoice = null;
+            }
+            elements.voiceSelect.value = voiceName;
+        });
+
         elements.startPracticeBtn.addEventListener('click', function() {
             loadWords(PRELOADED_WORDS.join('\n'));
         });
 
-        // File upload
         elements.fileUpload.addEventListener('change', function(e) {
             var file = e.target.files[0];
             if (file) {
@@ -302,7 +362,6 @@
             }
         });
 
-        // Custom words
         elements.loadCustomBtn.addEventListener('click', function() {
             var text = elements.wordInput.value;
             if (text.trim()) {
@@ -348,7 +407,7 @@
 
         function updateDisplay() {
             elements.progressText.textContent = 'Word ' + (currentIndex + 1) + ' of ' + words.length;
-            elements.wordDisplay.innerHTML = '<button id="showWordBtn" class="text-lg md:text-2xl underline hover:text-yellow-200 font-bold bg-white/20 px-6 py-3 rounded-2xl hover:bg-white/30 transition">Show Word</button>';
+            elements.wordDisplay.innerHTML = '<button id="showWordBtn" class="text-lg md:text-2xl underline font-bold bg-white/20 px-6 py-3 rounded-2xl active:bg-white/30 transition">Show Word</button>';
             elements.meaningBox.classList.add('hidden');
             elements.showMeaningBtn.classList.remove('hidden');
             elements.showMeaningBtn.disabled = false;
@@ -364,29 +423,57 @@
 
         function showWord() {
             var word = words[currentIndex];
-            elements.wordDisplay.innerHTML = '<div class="space-y-4"><h2 class="text-4xl md:text-6xl font-black tracking-wide drop-shadow-lg animate-pulse">' + word + '</h2></div>';
+            elements.wordDisplay.innerHTML = '<div class="space-y-4"><h2 class="text-4xl md:text-7xl font-black tracking-wider drop-shadow-2xl sparkle" style="text-shadow: 0 0 20px rgba(255,255,255,0.8);">' + word + '</h2></div>';
         }
 
         function speakWord(word, rate) {
             rate = rate || 0.8;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
+                
                 var utterance = new SpeechSynthesisUtterance(word);
                 utterance.lang = 'en-US';
                 utterance.rate = rate;
-                utterance.pitch = 1;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
                 
-                var voices = window.speechSynthesis.getVoices();
-                var usVoice = voices.find(function(voice) {
-                    return voice.lang === 'en-US' || voice.lang.startsWith('en-US');
-                });
-                
-                if (usVoice) {
-                    utterance.voice = usVoice;
+                // Use selected voice or auto-select
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                } else {
+                    // Auto-select best voice
+                    var voices = window.speechSynthesis.getVoices();
+                    var preferredVoices = ['Samantha', 'Alex', 'Google US English', 'Microsoft David', 'Microsoft Zira'];
+                    
+                    var bestVoice = null;
+                    for (var i = 0; i < preferredVoices.length; i++) {
+                        bestVoice = voices.find(function(voice) {
+                            return voice.name.includes(preferredVoices[i]);
+                        });
+                        if (bestVoice) break;
+                    }
+                    
+                    if (!bestVoice) {
+                        bestVoice = voices.find(function(voice) {
+                            return voice.lang === 'en-US' || voice.lang.startsWith('en-US');
+                        });
+                    }
+                    
+                    if (bestVoice) {
+                        utterance.voice = bestVoice;
+                    }
                 }
                 
                 window.speechSynthesis.speak(utterance);
             }
+        }
+        
+        // Load voices on page load
+        if ('speechSynthesis' in window) {
+            loadVoices();
+            window.speechSynthesis.onvoiceschanged = function() {
+                loadVoices();
+            };
         }
 
         function fetchMeaning(word) {
@@ -398,7 +485,7 @@
             if (!apiKey || apiKey === 'YOUR_API_KEY_HERE') {
                 meanings[word] = {
                     partOfSpeech: '',
-                    definition: 'API key not configured. Please add your Merriam-Webster API key in the code.'
+                    definition: 'Please enter your API key above to see definitions. Pronunciation still works!'
                 };
                 displayMeaning(word);
                 return;
@@ -424,7 +511,7 @@
                     } else {
                         meanings[word] = {
                             partOfSpeech: '',
-                            definition: 'Word not found in dictionary'
+                            definition: 'Word not found'
                         };
                     }
                     displayMeaning(word);
@@ -452,7 +539,9 @@
             }
             textToSpeak += meaning.definition;
             
-            speakWord(textToSpeak, 0.5);
+            if (!meaning.definition.includes('API key not configured')) {
+                speakWord(textToSpeak, 0.8);
+            }
         }
 
         elements.speakBtn.addEventListener('click', function() {
@@ -513,17 +602,6 @@
             elements.practiceSection.classList.add('hidden');
             elements.inputSection.classList.remove('hidden');
         });
-
-        // Service Worker Registration for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('sw.js').then(function(registration) {
-                    console.log('ServiceWorker registered');
-                }, function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
     </script>
 </body>
 </html>
